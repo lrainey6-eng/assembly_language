@@ -1,0 +1,25 @@
+// factorial program in assembly
+// written by Levin Rainey
+// 2/5/24
+// this is an outdated version, and is highly inefficient. to increase efficiency, the addition under 'multiply' needs to add the larger number to the smaller number 'n' times, where
+// 'n' is the smaller number.
+ inp r0
+	mov r2, #0
+	mov r1, r0
+	sub r1, r1, #1
+multiply:
+	add r2, r1, r2
+	sub r0, r0, #1
+	cmp r0, #1
+	blt next_num
+	b multiply
+next_num:
+	sub r1, r1, #1
+	cmp r1, #1
+	blt end
+	mov r0, r2
+	sub r2, r2, r0
+	b multiply
+end:
+	out r2
+	halt
